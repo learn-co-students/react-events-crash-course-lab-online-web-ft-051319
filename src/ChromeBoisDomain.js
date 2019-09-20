@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import { drawChromeBoiAtCoords, toggleCycling, resize } from './canvasHelpers.js'
-
+ 
 
 export default class ChromeBoisDomain extends Component {
-  
+  handleKeyEvent = (event) =>{
+    
+    if(event.key === "a"){
+      console.log(event.key)
+      resize("+")
+    }else if(event.key === "s"){
+      resize("-")
+    }
+  }
   handleMouseMove = (event) => {
+    //console.log(event.screenX, event.screenY)
+    drawChromeBoiAtCoords(event.screenX, event.screenY)
     /* TODO: This method should capture the `x` and `y` coordinates of the mouse
      * from the event and use them to invoke the `drawChromeBoiAtCoords`
      * function that has been provided and is already imported
@@ -27,6 +37,8 @@ export default class ChromeBoisDomain extends Component {
   render() {
     return (
       <canvas 
+        onClick={toggleCycling}
+        onKeyDown={this.handleKeyEvent}
         onMouseMove={this.handleMouseMove}
         width='900'
         height='600'
