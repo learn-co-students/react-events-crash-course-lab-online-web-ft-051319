@@ -8,13 +8,16 @@ export default class ChromeBoisDomain extends Component {
     if(event.key === "a"){
       console.log(event.key)
       resize("+")
-    }else if(event.key === "s"){
+    }
+    if(event.key === "s"){
       resize("-")
     }
   }
   handleMouseMove = (event) => {
     //console.log(event.screenX, event.screenY)
-    drawChromeBoiAtCoords(event.screenX, event.screenY)
+    
+    drawChromeBoiAtCoords(event.clientX, event.clientY)
+    //drawChromeBoiAtCoords(event.screenX, event.screenY)
     /* TODO: This method should capture the `x` and `y` coordinates of the mouse
      * from the event and use them to invoke the `drawChromeBoiAtCoords`
      * function that has been provided and is already imported
